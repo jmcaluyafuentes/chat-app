@@ -7,6 +7,10 @@ const MessageForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const text = value.trim();
+
+        if (text.length > 0) sendMessage(creds, chatId, { text });
     }
 
     const handleChange = (e) => {
