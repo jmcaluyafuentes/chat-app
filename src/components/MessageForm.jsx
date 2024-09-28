@@ -22,6 +22,10 @@ const MessageForm = (props) => {
         isTyping(props, chatId);
     }
 
+    const handleUpload = (e) => {
+        sendMessage(creds, chatId, { files: e.target.value, text: '' })
+    }
+
     return (
         <form className="message-form" onSubmit={handleSubmit}>
             <input 
@@ -35,6 +39,13 @@ const MessageForm = (props) => {
                 <span className='image-button'>
                     <PictureOutlined className='picture-icon'/>
                 </span>
+                <input 
+                    type="file"
+                    multiple={false}
+                    id="upload-button"
+                    style={{ display: 'none' }}
+                    onChange={handleUpload}
+                />
             </label>
         </form>
     )
