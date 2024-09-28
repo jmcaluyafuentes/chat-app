@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { sendMessage, isTyping } from 'react-chat-engine'
 
-const MessageForm = () => {
-  return (
-    <div>MessageForm</div>
-  )
+const MessageForm = (props) => {
+    const [value, setValue] = useState('');
+    const { chatId, creds } = props;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+        
+        isTyping(props, chatId);
+    }
+
+    return (
+        <form className="message-form" onSubmit={handleSubmit}>
+            <input 
+                className="message-input"
+                placeholder='Send a message'
+                value={value}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+            />
+        </form>
+    )
 }
 
 export default MessageForm
