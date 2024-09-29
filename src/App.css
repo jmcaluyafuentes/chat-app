@@ -267,12 +267,14 @@
     margin: 5px;
     width: 90%;
 }
+
 .button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.4s;
 }
+
 .button span:after {
     content: '\00bb';
     position: absolute;
@@ -281,16 +283,12 @@
     right: -20px;
     transition: 0.5s;
 }
+
 .button:hover span {
     padding-right: 25px;
 }
+
 .button:hover span:after {
     opacity: 1;
     right: 0;
-}
-
-.error {
-    color: white;
-    text-align: center;
-    margin-top: 20px;
 }
