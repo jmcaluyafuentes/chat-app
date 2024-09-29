@@ -11,26 +11,33 @@ const MessageForm = (props) => {
 
         const text = value.trim();
 
-        if (text.length > 0) sendMessage(creds, chatId, { text });
+        if (text.length > 0) {
+            sendMessage(creds, chatId, { text });
+        }
 
         setValue('');
     }
 
     const handleChange = (e) => {
         setValue(e.target.value);
+        console.log(chatId)
         
         isTyping(props, chatId);
     }
 
     const handleUpload = (e) => {
-        sendMessage(creds, chatId, { files: e.target.value, text: '' })
+        // const file = e.target.files[0];
+
+        // if (file) {
+            sendMessage(creds, chatId, { files: e.target.files, text: '' })
+        // }
     }
 
     return (
         <form className="message-form" onSubmit={handleSubmit}>
             <input 
                 className="message-input"
-                placeholder='Send a message'
+                placeholder='Send a message ...'
                 value={value}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
@@ -47,6 +54,9 @@ const MessageForm = (props) => {
                     onChange={handleUpload}
                 />
             </label>
+            <button type="submit" className='send-button'>
+                <SendOutlined className="send-icon" />
+            </button>
         </form>
     )
 }
